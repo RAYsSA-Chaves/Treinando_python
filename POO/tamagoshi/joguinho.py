@@ -1,9 +1,8 @@
 from tamagoshi import Tamagoshi
 
 class Dragao(Tamagoshi):
-    def __init__(self, nome, raca):
-        super().__init__(nome)
-        self.raca = raca
+    def __init__(self, nome, saude):
+        super().__init__(nome, saude)
         self.banho = 0
         self.sede = 0
         self.saude = 200
@@ -35,4 +34,5 @@ class Dragao(Tamagoshi):
 
 class Pou(Tamagoshi):
     def __init__(self, nome, banho):
+
         super().__init__(nome)
