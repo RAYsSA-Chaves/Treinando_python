@@ -9,6 +9,7 @@ class Dragao(Tamagoshi):
         self.temperamento = 0
 
     def mostrarInfo():
+        print("")
         print(f"------------ {({self.nome}).upper()} ------------")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]")
         print("-------------------------------")
@@ -27,18 +28,36 @@ class Dragao(Tamagoshi):
     def beberAgua(self, qtd):
         if (self.sede == 0):
             print(f"{self.nome} não está com sede.")
+        elif (self.sede - qtd < 0):
+            self.sede = 0
+            print(f"{self.nome} bebeu {qtd} litros de água.")
         else:
             self.sede -= qtd
             print(f"{self.nome} bebeu {qtd} litros de água.")
 
     def voar(self):
-        self.tedio -= 10
-        self.fome += 5
-        self.sede += 5
+        if (tedio - 10 < 0):
+         self.tedio = 0
+        else:
+            self.tedio -= 10
+        if (self.fome + 5 < 100):
+           self.fome = 100
+        else:
+            self.fome += 5
+        if (self.sede + 5 > 100):
+            self.sede = 100
+        else:
+            self.sede += 5
 
     def soltar_fogo(self):
-        self.tedio -= 20
-        self.temperamento -= 20
+        if (self.tedio - 20 < 0):
+         selself.tedio = 0
+        else:
+            self.tedio -= 20
+        if (self.temperamento - 20 < 0):
+         selself.temperamento = 0
+        else:
+            self.temperamento -= 20
 
 # ----------------------------------------------------
 
@@ -106,4 +125,5 @@ class Pinguim(Tamagoshi):
         if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
+
 
