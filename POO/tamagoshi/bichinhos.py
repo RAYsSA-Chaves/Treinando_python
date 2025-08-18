@@ -9,7 +9,6 @@ class Dragao(Tamagoshi):
         self.temperamento = 0
 
     def mostrarInfo():
-        print("")
         print(f"------------ {({self.nome}).upper()} ------------")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]")
         print("-------------------------------")
@@ -107,3 +106,4 @@ class Pinguim(Tamagoshi):
         if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
+
