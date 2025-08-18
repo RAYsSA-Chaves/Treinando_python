@@ -9,13 +9,17 @@ class Tamagoshi:
     def alimentar(self, qtd):
         if (self.fome == 0):
             print(f"{self.nome} não está com fome.")
-        elif (qtd >= 0) and (qtd <= 100):
+        elif (self.fome - qtd/100 < 0):
+            self.fome = 0
+        else:
             self.fome -= self.fome * (qtd/100)
             self.sede += 5
             print(f"{self.nome} comeu {qtd} comidinhas.")
 
     def brincar(self, qtd):
-        if (qtd >= 0) and (qtd <= 100):
+        if (self.tedio - qtd/100 < 0):
+            self.tedio = 0
+        else:
             self.tedio -= self.tedio * (qtd/100)
 
     def getHumor(self):
@@ -29,7 +33,7 @@ class Tamagoshi:
         elif ((self.fome > 80 and self.fome <= 90)) or ((self.tedio > 80 and self.tedio <= 60)):
             self.saude -=50
         elif (self.fome > 90) or (self.tedio > 90):
-            print("Estou morrendo.......AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!")
+            print(f"[{self.nome}] Estou morrendo.......AHHHHHHHHHHHHHHHHHHHHHHH!!!")
         elif (self.fome > 99) or (self.tedio > 99):
             self.saude = 0
             bichinho_morreu = True
@@ -40,3 +44,4 @@ class Tamagoshi:
         self.idade += 0.2
         self.tedio += 2.5
         self.fome += 10
+
