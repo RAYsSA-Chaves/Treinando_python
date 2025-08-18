@@ -14,27 +14,19 @@ class Dragao(Tamagoshi):
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]")
         print("-------------------------------")
         print("")
-
-    def alimentar(self, qtd):
-        if (self.fome == 0):
-            print(f"{self.nome} não está com fome.")
-        elif (qtd >= 0) and (qtd <= 100):
-            self.fome -= self.fome * (qtd/50)
-            self.sede += 5
-            print(f"{self.nome} comeu {qtd} comidinhas.")
         
     def banho(self, qtd):
-        if (self.banho <= 0):
+        if (self.banho == 0):
             print(f"{self.nome} não quer tomar banho agora.")
-        elif (qtd >= 0 <= 50):
-            self.banho += self.banho * (qtd)
+        elif (qtd + self.banho <= 100):
+            self.banho += self.banho * (qtd/50)
             print(f"{self.nome} tomou um banhinho rápido.")
         else:
             self.banho = 100
             print(f"{self.nome} tomou banho e está cheirosinho!")
 
     def beberAgua(self, qtd):
-        if (self.sede <= 0):
+        if (self.sede == 0):
             print(f"{self.nome} não está com sede.")
         else:
             self.sede -= qtd
