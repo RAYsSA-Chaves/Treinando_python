@@ -128,25 +128,38 @@ class Pinguim(Tamagoshi):
         print("")
         
     def alimentar(self, qtd):
-        if self.peixes > 0:
-            super().alimentar(qtd)
+        if (self.fome == 0):
+            print(f"{self.nome} não está com fome.")
+        elif (self.peixes > 0):
+            if ((qtd <= self.peixes) and (qtd > 0)):
+                self.peixes -= qtd
+                if (self.fome - qtd/50 < 0):
+                    self.fome = 0
+                else:
+                    self.fome -= qtd/50
+                    print(f"{self.nome} comeu peixinhos.")
+            else:
+                print("Quantidade de peixes insuficiente. ")
         else:
             print("Os peixes acabaram :(")
         
     def nadar(self):
-        self.tedio -= 25
+        if (self.tedio - 25 < 0):
+            self.tedio = 0
+        else:
+            self.tedio -= 25
         self.fome += 8
-        
-    def escorregar_no_gelo(self):
-        self.tedio -= 15
-        self.fome += 5
+        print(f"{self.nome} nadou e está mais feliz agora :D")
         
     def pescar(self, qtd):
-        if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
+        if ((self.peixes < 10) and (qtd > 0) and (self.peixes + qtd <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
-
-
-
-
-
+        elif (self.peixes > 10):
+            print("O estoque de peixes está cheio!")
+        elif (self.peixes + qtd > 10):
+            peixes_fugidos = 10 - qtd
+            self.peixes += qtd - fugidos
+            print(f"Não é possível guardar mais de 10 peixes no estoque. {peixes_fugidos} peixes fugiram.")
+        else:
+            print("Quantidade de peixes insuficiente para pescar.")
