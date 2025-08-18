@@ -37,27 +37,38 @@ class Dragao(Tamagoshi):
 
     def voar(self):
         if (tedio - 10 < 0):
-         self.tedio = 0
+            self.tedio = 0
         else:
             self.tedio -= 10
         if (self.fome + 5 < 100):
-           self.fome = 100
+            self.fome = 100
         else:
             self.fome += 5
         if (self.sede + 5 > 100):
             self.sede = 100
         else:
             self.sede += 5
+        print(f"{self.nome} deu um rolê pelo céu e está mais feliz agora :D")
 
     def soltar_fogo(self):
         if (self.tedio - 20 < 0):
-         selself.tedio = 0
+            self.tedio = 0
         else:
             self.tedio -= 20
         if (self.temperamento - 20 < 0):
-         selself.temperamento = 0
+            self.temperamento = 0
         else:
             self.temperamento -= 20
+        print(f"{self.nome} cuspiu fogo por todos os lados e está mais calmo agora ^_^")
+    
+    def fugir(self):
+         if (self.temperamento == 100):
+             print(f"{self.nome} ficou tão revoltado que fugiu T_T")
+             perdeu = true
+   
+    def passar_tempo(self)
+        self.fugir()
+        super().passar_tempo()
 
 # ----------------------------------------------------
 
@@ -125,6 +136,7 @@ class Pinguim(Tamagoshi):
         if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
+
 
 
 
