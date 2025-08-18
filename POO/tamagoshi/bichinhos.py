@@ -61,7 +61,7 @@ class Dragao(Tamagoshi):
 
 # ----------------------------------------------------
 
-class Pou(Tamagoshi):
+class OctoCat(Tamagoshi):
     def __init__(self, nome, saude, fome, idade, tedio):
         super().__init__(nome, saude, fome, idade, tedio)
         self.banho = 50
@@ -91,8 +91,8 @@ class Pou(Tamagoshi):
             self.sede -= qtd
             print(f"{self.nome} bebeu {qtd} litros de água.")
             
-    def dançar(self, qtd):
-        self.tedio -= 20
+    def aprender_truque(self, qtd):
+        self.tedio -= 30
         self.sede += 10
         
 # ----------------------------------------------------   
@@ -125,5 +125,6 @@ class Pinguim(Tamagoshi):
         if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
+
 
 
