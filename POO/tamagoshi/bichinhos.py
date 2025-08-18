@@ -66,9 +66,9 @@ class Dragao(Tamagoshi):
              print(f"{self.nome} ficou tão revoltado que fugiu T_T")
              perdeu = true
    
-    def passar_tempo(self)
+    def tempoPassando(self)
         self.fugir()
-        super().passar_tempo()
+        super().tempoPassando()
 
 # ----------------------------------------------------
 
@@ -86,25 +86,32 @@ class OctoCat(Tamagoshi):
         print("")
         
     def banho(self, qtd):
-        if (self.banho <= 0):
+        if (self.banho == 0):
             print(f"{self.nome} não quer tomar banho agora.")
-        elif (qtd >= 0 <= 50):
-            self.banho += self.banho * (qtd)
+        elif (qtd + self.banho <= 100):
+            self.banho += self.banho * (qtd/50)
             print(f"{self.nome} tomou um banhinho rápido.")
         else:
             self.banho = 100
             print(f"{self.nome} tomou banho e está cheirosinho!")
-            
+    
     def beberAgua(self, qtd):
-        if (self.sede <= 0):
+        if (self.sede == 0):
             print(f"{self.nome} não está com sede.")
+        elif (self.sede - qtd < 0):
+            self.sede = 0
+            print(f"{self.nome} bebeu {qtd} litros de água.")
         else:
             self.sede -= qtd
             print(f"{self.nome} bebeu {qtd} litros de água.")
             
-    def aprender_truque(self, qtd):
-        self.tedio -= 30
+    def aprender_truque(self):
+        if (self.tedio - 10 < 0):
+            self.tedio = 0
+        else:
+            self.tedio -= 30
         self.sede += 10
+        print(f"{self.nome} aprendeu um novo truque!")
         
 # ----------------------------------------------------   
         
@@ -113,7 +120,7 @@ class Pinguim(Tamagoshi):
         super().__init__(nome, saude, fome, idade, tedio)
         self.peixes = 5
         
-    def mostrarInfo():
+    def mostrarInfo(self):
         print("")
         print(f"------------ {({self.nome}).upper()} ------------")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[IdaEstoque de peixes]: [{self.peixes}]")
@@ -123,6 +130,8 @@ class Pinguim(Tamagoshi):
     def alimentar(self, qtd):
         if self.peixes > 0:
             super().alimentar(qtd)
+        else:
+            print("Os peixes acabaram :(")
         
     def nadar(self):
         self.tedio -= 25
@@ -136,6 +145,7 @@ class Pinguim(Tamagoshi):
         if ((self.peixes <= 10) and (qtd > 0) and (qtd + 10 <= 10)):
             self.peixes += qtd
             print("O estoque de peixes aumentou!")
+
 
 
 
