@@ -7,8 +7,12 @@ class Tamagoshi:
         self.tedio = 0
 
     def alimentar(self, qtd):
-        if (qtd >= 0) and (qtd <= 100):
+        if (self.fome == 0):
+            print(f"{self.nome} não está com fome.")
+        elif (qtd >= 0) and (qtd <= 100):
             self.fome -= self.fome * (qtd/100)
+            self.sede += 5
+            print(f"{self.nome} comeu {qtd} comidinhas.")
 
     def brincar(self, qtd):
         if (qtd >= 0) and (qtd <= 100):
@@ -29,8 +33,7 @@ class Tamagoshi:
         elif (self.fome > 99) or (self.tedio > 99):
             self.saude = 0
             bichinho_morreu = True
-            print("Seu bichinho morreu T_T") 
-        
+            print("Seu bichinho morreu T_T")      
 
     def tempoPassando(self):
         self.vida()
