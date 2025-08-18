@@ -36,7 +36,7 @@ class Tamagoshi:
             print(f"[{self.nome}] Estou morrendo.......AHHHHHHHHHHHHHHHHHHHHHHH!!!")
         elif (self.fome > 99) or (self.tedio > 99):
             self.saude = 0
-            bichinho_morreu = True
+            perdeu = True
             print("Seu bichinho morreu T_T")      
 
     def tempoPassando(self):
@@ -44,4 +44,5 @@ class Tamagoshi:
         self.idade += 0.2
         self.tedio += 2.5
         self.fome += 10
-
+        if (perdeu):
+            break
