@@ -1,18 +1,18 @@
-from tamagoshi import Tamagoshi
+from tamagotchi import Tamagotchi
 
-class Dragao(Tamagoshi):
-    def __init__(self, nome, saude, fome, idade, tedio):
-        super().__init__(nome, saude, fome, idade, tedio)
+class Dragao(Tamagotchi):
+    def __init__(self, nome):
+        super().__init__(nome)
         self.banho = 50
         self.sede = 0
         self.saude = 200
         self.temperamento = 0
 
-    def mostrarInfo():
+    def mostrarInfo(self):
         print("")
-        print(f"------------ {({self.nome}).upper()} ------------")
+        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]")
-        print("-------------------------------")
+        print("════════════════════════════════════")
         print("")
         
     def banho(self, qtd):
@@ -40,7 +40,7 @@ class Dragao(Tamagoshi):
             self.tedio = 0
         else:
             self.tedio -= 10
-        if (self.fome + 5 < 100):
+        if (self.fome + 5 > 100):
             self.fome = 100
         else:
             self.fome += 5
@@ -62,27 +62,27 @@ class Dragao(Tamagoshi):
         print(f"{self.nome} cuspiu fogo por todos os lados e está mais calmo agora ^_^")
     
     def fugir(self):
-         if (self.temperamento == 100):
-             print(f"{self.nome} ficou tão revoltado que fugiu T_T")
-             perdeu = true
-   
-    def tempoPassando(self)
+        if (self.temperamento == 100):
+            print(f"{self.nome} ficou tão revoltado que fugiu T_T")
+            self.fugiu = True
+
+    def tempoPassando(self):
         self.fugir()
         super().tempoPassando()
 
 # ----------------------------------------------------
 
-class OctoCat(Tamagoshi):
-    def __init__(self, nome, saude, fome, idade, tedio):
-        super().__init__(nome, saude, fome, idade, tedio)
+class OctoCat(Tamagotchi):
+    def __init__(self, nome):
+        super().__init__(nome)
         self.banho = 50
         self.sede = 0
         
-    def mostrarInfo():
+    def mostrarInfo(self):
         print("")
-        print(f"------------ {({self.nome}).upper()} ------------")
+        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]")
-        print("-------------------------------")
+        print("════════════════════════════════════")
         print("")
         
     def banho(self, qtd):
@@ -115,16 +115,16 @@ class OctoCat(Tamagoshi):
         
 # ----------------------------------------------------   
         
-class Pinguim(Tamagoshi):
-    def __init__(self, nome, saude, fome, idade, tedio):
-        super().__init__(nome, saude, fome, idade, tedio)
+class Pinguim(Tamagotchi):
+    def __init__(self, nome):
+        super().__init__(nome)
         self.peixes = 5
         
     def mostrarInfo(self):
         print("")
-        print(f"------------ {({self.nome}).upper()} ------------")
-        print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[IdaEstoque de peixes]: [{self.peixes}]")
-        print("-------------------------------")
+        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
+        print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Estoque de peixes]: [{self.peixes}]")
+        print("════════════════════════════════════")
         print("")
         
     def alimentar(self, qtd):
@@ -159,7 +159,7 @@ class Pinguim(Tamagoshi):
             print("O estoque de peixes está cheio!")
         elif (self.peixes + qtd > 10):
             peixes_fugidos = 10 - qtd
-            self.peixes += qtd - fugidos
+            self.peixes += qtd - peixes_fugidos
             print(f"Não é possível guardar mais de 10 peixes no estoque. {peixes_fugidos} peixes fugiram.")
         else:
             print("Quantidade de peixes insuficiente para pescar.")
