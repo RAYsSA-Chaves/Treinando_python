@@ -10,11 +10,11 @@ class Tamagotchi:
     def alimentar(self, qtd):
         if (self.fome == 0):
             print(f">>>> {self.nome.upper()}: não estou com fome -_-")
-        elif (self.fome - qtd/100 < 0):
+        elif (self.fome - qtd/20 < 0):
             self.fome = 0
         else:
-            self.fome -= self.fome * (qtd/100)
-            print(f"{self.nome.upper()}: Nhac nhac nhac")
+            self.fome -= self.fome * (qtd/20)
+            print(f">>>> {self.nome.upper()}: Nhac nhac nhac")
 
     def brincar(self, qtd):
         if self.getHumor() > 80:
@@ -43,7 +43,6 @@ class Tamagotchi:
             print("Seu bichinho morreu T_T")     
 
     def tempoPassando(self):
-        self.vida()
         self.idade += 0.2
         self.tedio += 2
         self.fome += 1
