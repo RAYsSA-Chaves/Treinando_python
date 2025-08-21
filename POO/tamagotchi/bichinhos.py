@@ -15,7 +15,7 @@ class Dragao(Tamagotchi):
         print("════════════════════════════════════════════════")
         print("")
         
-    def tomar_banho(self, qtd):
+    def tomarBanho(self, qtd):
         if (self.banho == 0):
             print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
         elif (qtd + self.banho <= 100):
@@ -85,7 +85,7 @@ class OctoCat(Tamagotchi):
         print("════════════════════════════════════════════════")
         print("")
         
-    def banho(self, qtd):
+    def tomarBanho(self, qtd):
         if (self.banho == 0):
             print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
         elif (qtd + self.banho <= 100):
