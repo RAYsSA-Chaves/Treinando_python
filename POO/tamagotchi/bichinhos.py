@@ -17,7 +17,7 @@ class Dragao(Tamagotchi):
         
     def banho(self, qtd):
         if (self.banho == 0):
-            print(f"{self.nome} não quer tomar banho agora.")
+            print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
         elif (qtd + self.banho <= 100):
             self.banho += self.banho * (qtd/50)
             print(f"{self.nome} tomou um banhinho rápido.")
@@ -27,13 +27,13 @@ class Dragao(Tamagotchi):
 
     def beberAgua(self, qtd):
         if (self.sede == 0):
-            print(f"{self.nome} não está com sede.")
+            print(f">>>> {self.nome.upper()}: Não estou com sede.")
         elif (self.sede - qtd < 0):
             self.sede = 0
-            print(f"{self.nome} bebeu {qtd} litros de água.")
+            print(f">>>> {self.nome.upper()}: Glub glub glub")
         else:
             self.sede -= qtd
-            print(f"{self.nome} bebeu {qtd} litros de água.")
+            print(f">>>> {self.nome.upper()}: Glub glub glub")
 
     def voar(self):
         if (self.tedio - 10 < 0):
@@ -87,7 +87,7 @@ class OctoCat(Tamagotchi):
         
     def banho(self, qtd):
         if (self.banho == 0):
-            print(f"{self.nome} não quer tomar banho agora.")
+            print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
         elif (qtd + self.banho <= 100):
             self.banho += self.banho * (qtd/50)
             print(f"{self.nome} tomou um banhinho rápido.")
@@ -97,13 +97,13 @@ class OctoCat(Tamagotchi):
     
     def beberAgua(self, qtd):
         if (self.sede == 0):
-            print(f"{self.nome} não está com sede.")
+            print(f">>>> {self.nome.upper()}: Não estou com sede.")
         elif (self.sede - qtd < 0):
             self.sede = 0
-            print(f"{self.nome} bebeu {qtd} litros de água.")
+            print(f">>>> {self.nome.upper()}: Glub glub glub")
         else:
             self.sede -= qtd
-            print(f"{self.nome} bebeu {qtd} litros de água.")
+            print(f">>>> {self.nome.upper()}: Glub glub glub")
             
     def aprender_truque(self):
         if super().getHumor() > 80:
@@ -131,7 +131,7 @@ class Pinguim(Tamagotchi):
         
     def alimentar(self, qtd):
         if (self.fome == 0):
-            print(f"{self.nome} não está com fome.")
+            print(f">>>> {self.nome.upper()}: não estou com fome -_-")
         elif (self.peixes > 0):
             if ((qtd <= self.peixes) and (qtd > 0)):
                 self.peixes -= qtd
@@ -139,7 +139,7 @@ class Pinguim(Tamagotchi):
                     self.fome = 0
                 else:
                     self.fome -= (qtd)
-                    print(f"{self.nome} comeu peixinhos.")
+                    print(f"{self.nome.upper()}: Nhac nhac nhac")
             else:
                 print("Quantidade de peixes insuficiente.")
         else:
