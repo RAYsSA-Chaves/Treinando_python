@@ -75,7 +75,7 @@ def jogo_loop(pet, bichinho):
                 print("")
                 qtd_validacao(qtd)
                 if (qtd_validacao(qtd)):
-                    pet.banho(qtd)
+                    pet.tomarBanho(qtd)
             elif ((açao == "4") and (bichinho in ("1", "2"))):
                 qtd = int(input("Informe a quantidade de água para dar ao seu pet: "))
                 print("")
