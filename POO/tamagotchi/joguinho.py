@@ -110,7 +110,9 @@ def jogo_loop(pet, bichinho):
             # Passar o tempo a cada 4 ações
             if (contador % 4 == 0):
                 pet.tempoPassando()
-            
+                
+            pet.vida()
+        
     return açao
 
 # Não permitir quantidades maiores que 100 (para banho, alimentar, etc)
