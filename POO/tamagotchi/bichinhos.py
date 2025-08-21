@@ -15,7 +15,7 @@ class Dragao(Tamagotchi):
         print("════════════════════════════════════════════════")
         print("")
         
-    def banho(self, qtd):
+    def tomar_banho(self, qtd):
         if (self.banho == 0):
             print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
         elif (qtd + self.banho <= 100):
