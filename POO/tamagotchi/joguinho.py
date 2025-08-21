@@ -1,7 +1,5 @@
 from bichinhos import Dragao, OctoCat, Pinguim
 
-açao = ""  # variável global a ser usada em mais de uma função
-
 # Início - criação do objeto
 def start():
     print("""
@@ -9,7 +7,7 @@ def start():
 ║       🐉 MyPet.py 🐧         ║
  ╚════════════════════════════╝
           
-Bem-vindo(a) ao mundo dos bichinhos virtuais! Cuide muito bem do seu!\n
+Bem-vindo(a) ao mundo dos bichinhos virtuais! Cuide muito bem do seu!
 """)
     
     # Escolher o bichinho
@@ -33,14 +31,16 @@ Bem-vindo(a) ao mundo dos bichinhos virtuais! Cuide muito bem do seu!\n
         pet = Pinguim(nome_pet)
 
     # Rodar jogo até o bichinho morrer, fugir ou usuário sair
+    açao = ""
     while ((pet.saude > 0) and (not pet.fugiu) and (açao != "sair")):
-        jogo_loop(pet, bichinho)
+        açao = jogo_loop(pet, bichinho)  # o controle das ações está nesta função
 
 # --------------------------------------------------
 
 # Loop do jogo que fica pedindo as ações
 def jogo_loop(pet, bichinho):
-    global açao
+    açao = ""
+    contador = 0
     while (açao != "sair"):
             # Sempre exibir as infos do bichinho
             pet.mostrarInfo()
@@ -104,9 +104,14 @@ def jogo_loop(pet, bichinho):
             # Opção inválida
             else:
                 print("Opção inválida.")
-
-            # Sempre passar o tempo
-            pet.tempoPassando()
+            
+            contador += 1
+ 
+            # Passar o tempo a cada 4 ações
+            if (contador % 4 == 0):
+                pet.tempoPassando()
+            
+    return açao
 
 # Não permitir quantidades maiores que 100 (para banho, alimentar, etc)
 def qtd_validacao(qtd):
