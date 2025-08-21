@@ -10,9 +10,9 @@ class Dragao(Tamagotchi):
 
     def mostrarInfo(self):
         print("")
-        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
+        print(f"══════════════════ {self.nome.upper()} ══════════════════")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]")
-        print("════════════════════════════════════")
+        print("════════════════════════════════════════════════")
         print("")
         
     def banho(self, qtd):
@@ -36,7 +36,7 @@ class Dragao(Tamagotchi):
             print(f"{self.nome} bebeu {qtd} litros de água.")
 
     def voar(self):
-        if (tedio - 10 < 0):
+        if (self.tedio - 10 < 0):
             self.tedio = 0
         else:
             self.tedio -= 10
@@ -80,9 +80,9 @@ class OctoCat(Tamagotchi):
         
     def mostrarInfo(self):
         print("")
-        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
+        print(f"══════════════════ {self.nome.upper()} ══════════════════")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]")
-        print("════════════════════════════════════")
+        print("════════════════════════════════════════════════")
         print("")
         
     def banho(self, qtd):
@@ -106,7 +106,9 @@ class OctoCat(Tamagotchi):
             print(f"{self.nome} bebeu {qtd} litros de água.")
             
     def aprender_truque(self):
-        if (self.tedio - 10 < 0):
+        if super().getHumor() > 80:
+            print(f"{self.nome} está de mau humor e não quer aprender um truque novo!")
+        elif (self.tedio - 10 < 0):
             self.tedio = 0
         else:
             self.tedio -= 30
@@ -122,9 +124,9 @@ class Pinguim(Tamagotchi):
         
     def mostrarInfo(self):
         print("")
-        print(f"══════════════════ {({self.nome}).upper()} ══════════════════")
+        print(f"══════════════════ {self.nome.upper()} ══════════════════")
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Estoque de peixes]: [{self.peixes}]")
-        print("════════════════════════════════════")
+        print("════════════════════════════════════════════════")
         print("")
         
     def alimentar(self, qtd):
@@ -133,13 +135,13 @@ class Pinguim(Tamagotchi):
         elif (self.peixes > 0):
             if ((qtd <= self.peixes) and (qtd > 0)):
                 self.peixes -= qtd
-                if (self.fome - qtd/50 < 0):
+                if (self.fome - qtd < 0):
                     self.fome = 0
                 else:
-                    self.fome -= qtd/50
+                    self.fome -= (qtd)
                     print(f"{self.nome} comeu peixinhos.")
             else:
-                print("Quantidade de peixes insuficiente. ")
+                print("Quantidade de peixes insuficiente.")
         else:
             print("Os peixes acabaram :(")
         
@@ -158,7 +160,7 @@ class Pinguim(Tamagotchi):
         elif (self.peixes > 10):
             print("O estoque de peixes está cheio!")
         elif (self.peixes + qtd > 10):
-            peixes_fugidos = 10 - qtd
+            peixes_fugidos = self.peixes + qtd - 10 
             self.peixes += qtd - peixes_fugidos
             print(f"Não é possível guardar mais de 10 peixes no estoque. {peixes_fugidos} peixes fugiram.")
         else:

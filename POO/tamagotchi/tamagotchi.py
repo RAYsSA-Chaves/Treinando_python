@@ -17,12 +17,14 @@ class Tamagotchi:
             print(f"{self.nome} comeu {qtd} comidinhas.")
 
     def brincar(self, qtd):
-        if self.getHumor() < 60:
+        if self.getHumor() > 80:
             print(f"{self.nome} está de mau humor e não quer brincar!")
         elif (self.tedio - qtd/100 < 0):
             self.tedio = 0
+            print(f"{self.nome} brincou e se divertiu!")
         else:
             self.tedio -= self.tedio * (qtd/100)
+            print(f"{self.nome} brincou e se divertiu!")
 
     def getHumor(self):
         return ((self.fome + self.tedio)/2)
@@ -44,4 +46,4 @@ class Tamagotchi:
         self.vida()
         self.idade += 0.2
         self.tedio += 2.5
-        self.fome += 10
+        self.fome += 2.5
