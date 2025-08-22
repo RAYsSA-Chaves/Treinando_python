@@ -1,6 +1,6 @@
 from bichinhos import Dragao, OctoCat, Pinguim
 
-# Início - criação do objeto
+# Início (criação do objeto)
 def start():
     print("""
  ╔════════════════════════════╗
@@ -33,7 +33,7 @@ Bem-vindo(a) ao mundo dos bichinhos virtuais! Cuide muito bem do seu!
     # Rodar jogo até o bichinho morrer, fugir ou usuário sair
     açao = ""
     while ((pet.saude > 0) and (not pet.fugiu) and (açao != "sair")):
-        açao = jogo_loop(pet, bichinho)  # o controle das ações está nesta função
+        açao = jogo_loop(pet, bichinho)
 
 # --------------------------------------------------
 
@@ -41,84 +41,88 @@ Bem-vindo(a) ao mundo dos bichinhos virtuais! Cuide muito bem do seu!
 def jogo_loop(pet, bichinho):
     açao = ""
     contador = 0
-    while (açao != "sair"):
-            # Sempre exibir as infos do bichinho
-            pet.mostrarInfo()
-            # Pedir a ação
-            print("Cuide do seu bichinho. Escolha a ação desejada:")
-            print('(Caso queira encerrar o jogo, digite "sair")\n')
-            if (bichinho == "1"):
-                açao = input("[1] Alimentar  [2] Brincar  [3] Dar banho  [4] Beber água  [5] Voar  [6] Soltar fogo\n").lower()
-            elif (bichinho == "2"):
-                açao = input("[1] Alimentar  [2] Brincar  [3] Dar banho  [4] Beber água  [5] Ensinar um truque\n").lower()
-            else:
-                açao = input("[1] Alimentar  [2] Brincar  [3] Nadar  [4] Pescar\n").lower()
+    while (açao != "sair") and (pet.saude > 0) and (not pet.fugiu):
+        # Sempre exibir as infos do bichinho
+        pet.mostrarInfo()
+        # Pedir a ação
+        print("Cuide do seu bichinho. Escolha a ação desejada:")
+        print('(Caso queira encerrar o jogo, digite "sair")\n')
+        if (bichinho == "1"):
+            açao = input("[1] Alimentar  [2] Brincar  [3] Dar banho  [4] Beber água  [5] Voar  [6] Soltar fogo\n").lower()
+        elif (bichinho == "2"):
+            açao = input("[1] Alimentar  [2] Brincar  [3] Dar banho  [4] Beber água  [5] Ensinar um truque\n").lower()
+        else:
+            açao = input("[1] Alimentar  [2] Brincar  [3] Nadar  [4] Pescar\n").lower()
 
-            # Chamar o método e executar a ação
-            # Opções iguais entre os três bichinhos
-            if (açao == "1"):
-                qtd = int(input("Informe a quantidade de comida para dar ao seu pet: "))
-                print("")
-                qtd_validacao(qtd)
-                if (qtd_validacao(qtd)):
-                    pet.alimentar(qtd)
-            elif (açao == "2"):
-                qtd = int(input("Informe a quantidade de brincadeira: "))
-                print("")
-                qtd_validacao(qtd)
-                if (qtd_validacao(qtd)):
-                    pet.brincar(qtd)
+        # Chamar o método e executar a ação
+        # Opções iguais entre os três bichinhos
+        if (açao == "1"):
+            qtd = int(input("Informe a quantidade de comida para dar ao seu pet: "))
+            print("")
+            if (qtd_validacao(qtd)):
+                pet.alimentar(qtd)
+        elif (açao == "2"):
+            qtd = int(input("Informe a quantidade de brincadeira: "))
+            print("")
+            if (qtd_validacao(qtd)):
+                pet.brincar(qtd)
 
-            # Opções iguais entre os bichinhos 1 e 2
-            elif ((açao == "3") and (bichinho in ("1", "2"))):
-                qtd = int(input("Informe a quantidade de banho: "))
-                print("")
-                qtd_validacao(qtd)
-                if (qtd_validacao(qtd)):
-                    pet.tomarBanho(qtd)
-            elif ((açao == "4") and (bichinho in ("1", "2"))):
-                qtd = int(input("Informe a quantidade de água para dar ao seu pet: "))
-                print("")
-                qtd_validacao(qtd)
-                if (qtd_validacao(qtd)):
-                    pet.beberAgua(qtd)
+        # Opções iguais entre os bichinhos 1 e 2
+        elif ((açao == "3") and (bichinho in ("1", "2"))):
+            qtd = int(input("Informe a quantidade de banho: "))
+            print("")
+            if (qtd_validacao(qtd)):
+                pet.tomarBanho(qtd)
+        elif ((açao == "4") and (bichinho in ("1", "2"))):
+            qtd = int(input("Informe a quantidade de água para dar ao seu pet: "))
+            print("")
+            if (qtd_validacao(qtd)):
+                pet.beberAgua(qtd)
 
-            # Opções individuais dos bichinhos
-            elif ((açao == "3") and (bichinho == "3")):
-                pet.nadar()
-            elif ((açao == "4") and (bichinho == "3")):
-                qtd = int(input("Quantos peixes quer tentar pescar?  "))
-                print("")
-                pet.pescar(qtd)
-            elif ((açao == "5") and (bichinho == "1")):
-                pet.voar()
-            elif ((açao == "5") and (bichinho == "2")):
-                pet.aprender_truque()
-            elif ((açao == "6") and (bichinho == "1")):
-                pet.soltar_fogo()
+        # Opções individuais dos bichinhos
+        elif ((açao == "3") and (bichinho == "3")):
+            pet.nadar()
+        elif ((açao == "4") and (bichinho == "3")):
+            qtd = int(input("Quantos peixes quer tentar pescar?  "))
+            print("")
+            pet.pescar(qtd)
+        elif ((açao == "5") and (bichinho == "1")):
+            print("")
+            pet.voar()
+        elif ((açao == "5") and (bichinho == "2")):
+            print("")
+            pet.aprender_truque()
+        elif ((açao == "6") and (bichinho == "1")):
+            print("")
+            pet.soltar_fogo()
 
-            # Opção sair
-            elif (açao == "sair"):
-                print("Saindo...")
+        # Opção sair
+        elif (açao == "sair"):
+            print("")
+            print("Saindo...")
             
-            # Opção inválida
-            else:
-                print("Opção inválida.")
+        # Opção inválida
+        else:
+            print("")
+            print(">>>> Opção inválida.")
+
+        # Verificar a saúde do bichinho
+        pet.vida()
+        # Verificar se não fugiu
+        pet.fugir()
             
+        # Passar o tempo a cada 4 ações
+        if (pet.saude > 0) and (not pet.fugiu) and (açao != "sair"):
             contador += 1
- 
-            # Passar o tempo a cada 4 ações
             if (contador % 4 == 0):
                 pet.tempoPassando()
-                
-            pet.vida()
         
     return açao
 
 # Não permitir quantidades maiores que 100 (para banho, alimentar, etc)
 def qtd_validacao(qtd):
     if qtd > 100:
-        print("Quantidade máxima permitida: 100!!!")
+        print(">>>> Quantidade máxima permitida: 100!!!")
         return False
     return True
 
