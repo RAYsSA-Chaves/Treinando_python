@@ -103,7 +103,6 @@ def jogo_loop(pet, bichinho):
             
         # Opção inválida
         else:
-            print("")
             print(">>>> Opção inválida.")
 
         # Verificar a saúde do bichinho
@@ -121,7 +120,10 @@ def jogo_loop(pet, bichinho):
 
 # Não permitir quantidades maiores que 100 (para banho, alimentar, etc)
 def qtd_validacao(qtd):
-    if qtd > 100:
+    if qtd < 0:
+        print(">>>> Quantidade não pode ser negativa!")
+        return False
+    elif qtd > 100:
         print(">>>> Quantidade máxima permitida: 100!!!")
         return False
     return True
