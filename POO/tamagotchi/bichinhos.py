@@ -96,6 +96,8 @@ class OctoCat(Tamagotchi):
             self.atualizar_atributo("sede", 10)
             self.atualizar_atributo("fome", 5)
             self.atualizar_atributo("humor", 5)
+            self.atualizar_atributo("banho", -10)
+            print(f">>>> {self.nome} aprendeu um truque novo!")
             
 # ----------------------------------------------------   
         
@@ -117,12 +119,15 @@ class Pinguim(Tamagotchi):
             print(f">>>> {self.nome.upper()}: não estou com fome -_-")
         elif (self.peixes > 0):
             if ((qtd <= self.peixes) and (qtd > 0)):
+                print(f">>>> {self.nome.upper()}: Nhac nhac nhac")
                 self.peixes -= qtd
                 self.atualizar_atributo("fome", -qtd * 5)
                 self.atualizar_atributo("saude", 5)
                 self.atualizar_atributo("humor", 3)
+            else:
+                print(">>>> Quantidade de peixes inválida.")
         else:
-            print(">>>> Quantidade de peixes insuficiente.")
+            print(">>>> Peixes insuficientes no estoque.")
         
     def nadar(self):
         self.atualizar_atributo("tedio", -25)

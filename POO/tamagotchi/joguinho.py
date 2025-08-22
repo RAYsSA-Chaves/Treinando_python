@@ -103,6 +103,7 @@ def jogo_loop(pet, bichinho):
             
         # Opção inválida
         else:
+            print("")
             print(">>>> Opção inválida.")
 
         # Verificar a saúde do bichinho

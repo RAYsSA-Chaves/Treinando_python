@@ -25,11 +25,13 @@ class Tamagotchi:
         if self.humor < 20:
             print(f">>>> {self.nome} está de mau humor e não quer brincar!")
             self.atualizar_atributo("tedio", 5)
+            self.atualizar_atributo("banho", -5)
         else:
             print(f">>>> {self.nome} brincou e se divertiu!")
             self.atualizar_atributo("tedio", -qtd / 10)
             self.atualizar_atributo("humor", 5)
             self.atualizar_atributo("fome", 5)
+            self.atualizar_atributo("banho", -5)
             if hasattr(self, "sede"):
                 self.atualizar_atributo("sede", 5)
 
@@ -41,10 +43,8 @@ class Tamagotchi:
         if (50 < self.fome <= 60) or (50 < self.tedio <= 60):
             self.atualizar_atributo("saude", -10)
         elif (60 < self.fome <= 80) or (60 < self.tedio <= 80):
-             self.atualizar_atributo("saude", -30)
-        elif (80 < self.fome <= 90) or (80 < self.tedio <= 90):
-             self.atualizar_atributo("saude", -35)
-        elif (90 < self.fome <= 99) or (90 < self.tedio <= 99):
+             self.atualizar_atributo("saude", -20)
+        elif (80 < self.fome <= 99) or (80 < self.tedio <= 99):
             print(f">>>> {self.nome.upper()}: Estou morrendo.......AHHHHHHHHHHHHHHHHHHHHHHH!!!")
             self.atualizar_atributo("saude", -40)
         elif (self.fome >= 100) or (self.tedio >= 100):
