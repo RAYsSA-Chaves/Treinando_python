@@ -15,73 +15,45 @@ class Dragao(Tamagotchi):
         print(f"[Idade]: [{self.idade}]\n[Fome]: [{self.fome}]\n[Sede]: [{self.sede}]\n[Banho]: [{self.banho}]\n[Saúde]: [{self.saude}]\n[Tédio]: [{self.tedio}]\n[Temperamento]: [{self.temperamento}]\n[Humor]: [{self.humor}]")
         print("════════════════════════════════════════════════")
         print("")
-        self.temperamento += 2
+        self.atualizar_atributo("temperamento", 2)
         
     def tomarBanho(self, qtd):
         if (self.banho == 100):
             print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
-            self.tedio += 5
-            self.temperamento += 10
-        elif (qtd + self.banho <= 100):
-            self.banho += qtd/10
-            print(f">>>> {self.nome} tomou um banhinho rápido.")
+            self.atualizar_atributo("tedio", 5)
+            self.atualizar_atributo("temperamento", 10)
         else:
-            self.banho = 100
-            print(f">>>> {self.nome} tomou banho e está cheirosinho!")
+            self.atualizar_atributo("banho", qtd / 5)
+            print(f">>>> {self.nome} tomou banho.")
 
     def beberAgua(self, qtd):
         if (self.sede == 0):
             print(f">>>> {self.nome.upper()}: Não estou com sede -_-")
-            self.tedio += 5
-            self.temperamento += 10
-        elif (self.sede - qtd < 0):
-            self.sede = 0
-            print(f">>>> {self.nome.upper()}: Glub glub glub")
+            self.atualizar_atributo("tedio", 5)
+            self.atualizar_atributo("temperamento", 10)
         else:
-            self.sede -= qtd
+            self.atualizar_atributo("sede", -qtd / 5)
             print(f">>>> {self.nome.upper()}: Glub glub glub")
 
     def voar(self):
-        if (self.tedio - 10 < 0):
-            self.tedio = 0
-        else:
-            self.tedio -= 10
-        if (self.fome + 5 > 100):
-            self.fome = 100
-        else:
-            self.fome += 5
-        if (self.sede + 5 > 100):
-            self.sede = 100
-        else:
-            self.sede += 5
-        if (self.humor + 5 < 100):
-                self.humor += 5
-        else:
-            self.humor = 100
         print(f">>>> {self.nome} deu um rolê pelo céu e está mais feliz agora :D")
+        self.atualizar_atributo("tedio", -10)
+        self.atualizar_atributo("fome", 8)
+        self.atualizar_atributo("sede", 8)
+        self.atualizar_atributo("humor", 5)
 
     def soltar_fogo(self):
-        if (self.tedio - 20 < 0):
-            self.tedio = 0
-        else:
-            self.tedio -= 20
-        if (self.temperamento - 20 < 0):
-            self.temperamento = 0
-        else:
-            self.temperamento -= 20
-        if (self.humor + 10 < 100):
-                self.humor += 10
-        else:
-            self.humor = 100
         print(f">>>> {self.nome} cuspiu fogo por todos os lados e está mais calmo agora ^_^")
+        self.atualizar_atributo("tedio", -20)
+        self.atualizar_atributo("temperamento", -20)
+        self.atualizar_atributo("humor", 10)
+        self.atualizar_atributo("fome", 5)
+        self.atualizar_atributo("sede", 5)
     
     def fugir(self):
         if (self.temperamento > 99):
-            print(f">>>> {self.nome} ficou tão revoltado que fugiu T_T")
+            print(f"\n>>>> {self.nome} ficou tão revoltado que fugiu T_T")
             self.fugiu = True
-
-    def tempoPassando(self):
-        super().tempoPassando()
 
 # ----------------------------------------------------
 
@@ -100,54 +72,31 @@ class OctoCat(Tamagotchi):
         print("")
         
     def tomarBanho(self, qtd):
-        if (self.banho == 100):
+        if (self.banho >= 100):
             print(f">>>> {self.nome.upper()}: Não quero tomar banho agora -_-")
-            self.tedio += 5
-        elif (qtd + self.banho <= 100):
-            self.banho += (qtd/10)
-            print(f">>>> {self.nome} tomou um banhinho rápido.")
+            self.atualizar_atributo("tedio", 5)
         else:
-            self.banho = 100
-            print(f">>>> {self.nome} tomou banho e está cheirosinho!")
-    
+            self.atualizar_atributo("banho", qtd / 5)
+            print(f">>>> {self.nome} tomou banho.")
+        
     def beberAgua(self, qtd):
         if (self.sede == 0):
             print(f">>>> {self.nome.upper()}: Não estou com sede.")
-            self.tedio += 5
-        elif (self.sede - qtd < 0):
-            self.sede = 0
-            print(f">>>> {self.nome.upper()}: Glub glub glub")
+            self.atualizar_atributo("tedio", 5)
         else:
-            self.sede -= qtd/5
+            self.atualizar_atributo("sede", -qtd / 5)
             print(f">>>> {self.nome.upper()}: Glub glub glub")
             
     def aprender_truque(self):
         if self.humor < 20:
             print(f">>>> {self.nome} está de mau humor e não quer aprender um truque novo!")
-            self.tedio += 5
-        elif (self.tedio - 10 < 0):
-            self.tedio = 0
-            if (self.sede + 10 > 100):
-                self.sede = 100
-            else:
-                self.sede += 10 
-            if (self.humor + 5 < 100):
-                self.humor += 5
-            else:
-                self.humor = 100
-            print(f">>>> {self.nome} aprendeu um novo truque!")
+            self.atualizar_atributo("tedio", 5)
         else:
-            self.tedio -= 10
-            if (self.sede + 10 > 100):
-                self.sede = 100
-            else:
-                self.sede += 10 
-            if (self.humor + 5 < 100):
-                self.humor += 5
-            else:
-                self.humor = 100
-            print(f">>>> {self.nome} aprendeu um novo truque!")
-        
+            self.atualizar_atributo("tedio", -10)
+            self.atualizar_atributo("sede", 10)
+            self.atualizar_atributo("fome", 5)
+            self.atualizar_atributo("humor", 5)
+            
 # ----------------------------------------------------   
         
 class Pinguim(Tamagotchi):
@@ -169,30 +118,16 @@ class Pinguim(Tamagotchi):
         elif (self.peixes > 0):
             if ((qtd <= self.peixes) and (qtd > 0)):
                 self.peixes -= qtd
-                if (self.fome - qtd < 0):
-                    self.fome = 0
-                    print(f">>>> {self.nome.upper()}: Nhac nhac nhac")
-                else:
-                    self.fome -= qtd
-                    print(f">>>> {self.nome.upper()}: Nhac nhac nhac")
-            else:
-                print(">>>> Quantidade de peixes insuficiente.")
+                self.atualizar_atributo("fome", -qtd * 5)
+                self.atualizar_atributo("saude", 5)
+                self.atualizar_atributo("humor", 3)
         else:
-            print(">>>> Os peixes acabaram :(")
+            print(">>>> Quantidade de peixes insuficiente.")
         
     def nadar(self):
-        if (self.tedio - 25 < 0):
-            self.tedio = 0
-        else:
-            self.tedio -= 25
-        if (self.fome + 8 > 100):
-            self.fome = 100
-        else:
-            self.fome += 8 
-        if (self.humor + 5 < 100):
-            self.humor += 5
-        else:
-            self.humor = 100
+        self.atualizar_atributo("tedio", -25)
+        self.atualizar_atributo("fome", 10)
+        self.atualizar_atributo("humor", 5)
         print(f">>>> {self.nome} nadou e está mais feliz agora :D")
         
     def pescar(self, qtd):
